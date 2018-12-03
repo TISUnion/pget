@@ -13,7 +13,7 @@ def onServerInfo(server, info):
         for line in helpmsg.splitlines():
           server.tell(info.player, line)
       elif (len(args) == 2):
-        result = os.system('cd plugins && wget ' + args[1])
+        result = os.system('cd plugins && wget -N ' + args[1])
         if result == 0:
           server.say('scucess')
         else:
