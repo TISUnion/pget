@@ -15,6 +15,6 @@ def onServerInfo(server, info):
       elif (len(args) == 2):
         result = os.system('cd plugins && wget -N ' + args[1])
         if result == 0:
-          server.say('scucess')
+          server.say('success')
         else:
           server.say('failed to download')
