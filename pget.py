@@ -8,9 +8,11 @@ helpmsg ='''------MCD pget插件------
 def onServerInfo(server, info):
   if info.isPlayer == 1:
     if info.content.startswith('!!pget'):
+      whitelist = []
       with open('./plugins/pget/whitelist.json') as handle:
-        whitelist = handle.readlines()
-      if  info.player in whitelist:
+        for line in handle.readlines():
+          whitelist.append(line.replace('\n','').replace('\r',''))
+      if info.player in whitelist:
         args = info.content.split(' ')
         if (len(args) == 1):
           for line in helpmsg.splitlines():
@@ -23,3 +25,4 @@ def onServerInfo(server, info):
             server.say('failed to download')
       else:
         server.say('Permission denied')
+
